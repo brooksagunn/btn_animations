@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+:root {
+  --std-color: rgb(207, 207, 207);
+  --accent-color: #07575b;
+}
+
 main {
   position: absolute;
   left: 50%;
@@ -18,24 +23,69 @@ main {
   font-size: 15px;
   border: none;
   margin-block: 20px;
-  color: #07575b;
-  background-color: blue;
-  color: white;
+  color: var(--accent-color);
+  background-color: var(--std-color);
   position: relative;
   cursor: pointer;
+  color: white;
 }
+
+/* Pop button */
 
 .pop-btn::after {
   content: "";
   position: absolute;
   left: 0;
   top: 0;
-  border: 3px solid blue;
-  width: calc(100% - 6px);
-  height: calc(100% - 6px);
+  --pop-btn-border: 3px;
+  border: 3px solid var(--std-color);
+  width: calc(100% - 2 * var(--pop-btn-border));
+  height: calc(100% - 2 * var(--pop-btn-border));
   transition: transform 0.2s;
 }
 
 .pop-btn:hover::after {
   transform: scaleX(1.1) scaleY(1.3);
 }
+
+/* Slide button */
+
+.slide-btn {
+  z-index: 1;
+  color: teal;
+  transition: color 1s ease;
+}
+
+.slide-btn:hover {
+  color: white;
+}
+
+.slide-btn::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--accent-color);
+  transform: scaleX(0);
+  transition: transform 0.5s ease-in-out;
+  transform-origin: left;
+  z-index: -1;
+}
+
+.slide-btn:hover::after {
+  transform: scaleX(1);
+}
+
+/* Circle button */
+
+/* .circle-btn::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--std-color);
+} */
